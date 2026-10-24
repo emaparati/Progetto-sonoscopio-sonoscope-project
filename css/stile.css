@@ -1,0 +1,98 @@
+/* ===================================================================
+   SONOSCOPIO - foglio di stile
+   ===================================================================
+   Il CSS descrive l'ASPETTO della pagina. Ogni blocco ha questa forma:
+
+       selettore {
+         proprietà: valore;
+       }
+
+   Il "selettore" dice A QUALI elementi si applica la regola:
+     body            -> l'elemento <body>
+     canvas          -> tutti gli elementi <canvas>
+     .nome           -> gli elementi con class="nome"
+     #nome           -> l'elemento con id="nome"
+   =================================================================== */
+
+
+/* ===================================================================
+   SEZIONE 1: STILE GENERALE DELLA PAGINA
+   =================================================================== */
+body {
+  margin: 0;                          /* il browser aggiunge un margine di default: lo togliamo */
+  background: #0f1530;                /* sfondo blu scuro (colore in notazione esadecimale RGB) */
+  color: #ecebfa;                     /* colore del testo: un bianco leggermente violaceo */
+  font-family: system-ui, sans-serif; /* usa il carattere di sistema; se manca, uno senza grazie */
+}
+
+
+/* ===================================================================
+   SEZIONE 2: LA TELA (CANVAS)
+   =================================================================== */
+canvas {
+  display: block;   /* di default il canvas si comporta come testo e lascia un piccolo
+                       spazio vuoto sotto di sé: con "block" lo eliminiamo */
+  max-width: 100%;  /* su schermi stretti la tela non esce mai dalla pagina... */
+  height: auto;     /* ...e l'altezza si adatta, mantenendo le proporzioni */
+}
+
+
+/* ===================================================================
+   SEZIONE 3: I CONTROLLI
+   =================================================================== */
+.pannello-controlli {
+  padding: 16px;        /* spazio interno tra il bordo del contenitore e i controlli */
+  display: flex;        /* "flexbox": dispone i figli in fila, uno accanto all'altro */
+  flex-wrap: wrap;      /* se non c'è abbastanza spazio, i controlli vanno a capo */
+  gap: 12px 16px;       /* spazio tra i controlli: 12px in verticale, 16px in orizzontale */
+  align-items: center;  /* li allinea verticalmente al centro della riga */
+}
+
+/* Il menu a tendina delle modalità */
+select {
+  font: inherit;               /* usa lo stesso carattere del resto della pagina */
+  padding: 6px 10px;           /* spazio interno */
+  background: #1a2150;         /* blu più chiaro dello sfondo */
+  color: #ecebfa;              /* testo chiaro */
+  border: 1px solid #2c3570;   /* bordo sottile */
+  border-radius: 6px;          /* angoli arrotondati */
+}
+
+/* Il pulsante del microfono */
+button {
+  font: inherit;
+  font-weight: 600;       /* testo in grassetto */
+  padding: 7px 14px;
+  background: #ffb547;    /* arancione: il colore di accento del progetto */
+  color: #0f1530;         /* testo blu scuro, ben leggibile sull'arancione */
+  border: 0;              /* nessun bordo */
+  border-radius: 6px;
+  cursor: pointer;        /* il puntatore diventa una manina sopra il pulsante */
+}
+button:hover {            /* ":hover" = quando il mouse è sopra l'elemento */
+  filter: brightness(1.1); /* lo schiarisce leggermente */
+}
+
+/* Lo slider della fluidità */
+input[type="range"] {
+  accent-color: #ffb547;  /* colora lo slider con l'arancione di accento */
+}
+
+/* Il numero accanto allo slider */
+#valoreFluidita {
+  min-width: 2.5em;       /* riserva uno spazio fisso: così, cambiando numero,
+                             i controlli vicini non "saltano" */
+  color: #9aa0c9;         /* grigio-violetto più discreto */
+}
+
+
+/* ===================================================================
+   SEZIONE 4: MESSAGGI PER L'UTENTE
+   =================================================================== */
+.messaggio-stato {
+  margin: 0;
+  padding: 8px 16px 0;
+  min-height: 1.2em;      /* riserva lo spazio di una riga anche quando è vuoto,
+                             così la pagina non si sposta all'arrivo di un messaggio */
+  color: #ffb547;         /* stesso arancione del pulsante, per attirare l'attenzione */
+}
