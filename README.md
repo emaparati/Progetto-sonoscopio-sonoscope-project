@@ -241,7 +241,7 @@ A questi controlli si aggiunge la prova pratica dell'autore nel browser, che ha 
 
 ## 13. Esecuzione e pubblicazione
 
-Per provare il progetto basta aprire `index.html` con un doppio clic. In alternativa, con Python installato, si può avviare un server locale dalla cartella del progetto con `python -m http.server 8000` e aprire `http://localhost:8000`.
+Per provare il progetto basta aprire `index.html` con un browser.
 
 Il passo successivo è la pubblicazione su GitHub: installare Git, creare il repository, scrivere un README con una GIF di anteprima e attivare GitHub Pages per ottenere un indirizzo online da inserire nel curriculum. Il sito pubblicato usa HTTPS, quindi il microfono funzionerà senza limitazioni.
 
