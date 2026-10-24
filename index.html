@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+  SONOSCOPIO - analizzatore audio in tempo reale
+  ==============================================
+  Questo file descrive la STRUTTURA della pagina: quali elementi esistono
+  (la tela, i pulsanti, il menu...) e in che ordine. Non dice COME appaiono
+  (lo fa css/stile.css) né COSA FANNO (lo fa js/sonoscopio.js).
+
+  Il file si chiama "index.html" perché è il nome che i server web (e anche
+  GitHub Pages) cercano per primo: se lo rinominassi, il sito non si aprirebbe
+  da solo scrivendo soltanto l'indirizzo della cartella.
+
+  La prima riga qui sopra (<!DOCTYPE html>) dichiara al browser che questo è
+  un documento HTML5 moderno.
+-->
+
+<!-- <html> è l'elemento che contiene tutta la pagina. lang="it" dice che il
+     contenuto è in italiano: serve ai lettori di schermo e ai traduttori. -->
+<html lang="it">
+
+<!-- <head>: informazioni SULLA pagina, che non compaiono nella finestra. -->
+<head>
+  <!-- Codifica dei caratteri: UTF-8 permette di scrivere correttamente
+       lettere accentate e simboli (è, à, ù, °...). -->
+  <meta charset="UTF-8">
+
+  <!-- Il titolo mostrato nella linguetta del browser. -->
+  <title>Sonoscopio</title>
+
+  <!-- Collegamento al foglio di stile: il browser va a leggere
+       l'aspetto della pagina dal file css/stile.css. -->
+  <link rel="stylesheet" href="css/stile.css">
+</head>
+
+<!-- <body>: tutto ciò che si vede nella finestra del browser. -->
+<body>
+
+  <!-- ===============================================================
+       SEZIONE 1: LA TELA
+       Il <canvas> è una superficie su cui il JavaScript disegna pixel
+       uno per uno. Qui compaiono i tre grafici (barre, spettro,
+       sonogramma). width e height sono le dimensioni in pixel.
+       L'id "tela" serve al JavaScript per ritrovare questo elemento.
+       =============================================================== -->
+  <canvas id="tela" width="960" height="480"></canvas>
+
+  <!-- ===============================================================
+       SEZIONE 2: MESSAGGI PER L'UTENTE
+       Un paragrafo (<p>) inizialmente vuoto: il JavaScript ci scrive
+       gli avvisi, ad esempio "Microfono non disponibile".
+       role="status" dice ai lettori di schermo di leggere ad alta voce
+       ogni nuovo messaggio che compare qui.
+       =============================================================== -->
+  <p id="messaggio" class="messaggio-stato" role="status"></p>
+
+  <!-- ===============================================================
+       SEZIONE 3: I CONTROLLI
+       Un <div> è un contenitore senza significato proprio: lo usiamo
+       per raggruppare tutti i controlli e disporli insieme con il CSS.
+       =============================================================== -->
+  <div class="pannello-controlli">
+
+    <!-- Sorgente audio 1: un file del computer.
+         type="file" crea il campo di scelta file.
+         accept="audio/*" mostra solo file audio nella finestra di scelta. -->
+    <input id="selettoreFile" type="file" accept="audio/*">
+
+    <!-- Sorgente audio 2: il microfono. È un pulsante che si accende e si
+         spegne. type="button" evita che si comporti come il pulsante di
+         invio di un modulo. Il testo cambia da JavaScript. -->
+    <button id="pulsanteMicrofono" type="button">Usa il microfono</button>
+
+    <!-- Il lettore del file audio, con play, pausa e volume ("controls").
+         "hidden" lo nasconde finché non c'è un file da riprodurre. -->
+    <audio id="lettore" controls hidden></audio>
+
+    <!-- Menu per scegliere la modalità di visualizzazione.
+         <label for="..."> associa l'etichetta al menu: cliccando
+         "Modalità" si seleziona il menu (utile per l'accessibilità).
+         Il "value" di ogni <option> è il nome che legge il JavaScript. -->
+    <label for="menuModalita">Modalità</label>
+    <select id="menuModalita">
+      <option value="barre">Barre</option>
+      <option value="curva">Spettro</option>
+      <option value="sonogramma">Sonogramma</option>
+    </select>
+
+    <!-- Slider della fluidità: quanto sono "morbidi" i movimenti di barre
+         e spettro. min, max e step definiscono i valori possibili.
+         Il valore iniziale lo imposta il JavaScript. -->
+    <label for="cursoreFluidita">Fluidità</label>
+    <input id="cursoreFluidita" type="range" min="0" max="0.95" step="0.05">
+
+    <!-- Piccolo testo accanto allo slider: ci scriviamo il valore attuale. -->
+    <span id="valoreFluidita"></span>
+  </div>
+
+  <!-- ===============================================================
+       COLLEGAMENTO AL JAVASCRIPT
+       Va messo IN FONDO al body: il browser legge la pagina dall'alto
+       verso il basso e il codice ha bisogno che tela, pulsanti e menu
+       esistano già quando parte.
+       =============================================================== -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
