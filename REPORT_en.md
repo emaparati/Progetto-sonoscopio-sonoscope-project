@@ -2,7 +2,7 @@
 
 Real-time audio analyzer for the browser · Portfolio report
 
-[Versione italiana](RELAZIONE.it.md)
+[Versione italiana](RELAZIONE_it.md)
 
 ## Table of contents
 
