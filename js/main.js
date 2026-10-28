@@ -1,5 +1,5 @@
 // =====================================================================
-// SONOSCOPIO - analizzatore audio in tempo reale
+// SPETTRA - analizzatore audio in tempo reale
 // =====================================================================
 //
 // COSA FA QUESTO PROGRAMMA
